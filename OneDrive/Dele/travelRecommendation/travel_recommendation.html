@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBloom</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            background-image: url('images/new-background-image.jpg'); /* Background image for the entire page */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure body takes full viewport height */
+        }
+        .navbar {
+            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent navbar */
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            padding: 0 20px; /* Add padding for spacing */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure it's above other content */
+        }
+        .navbar .logo {
+            color: #f2f2f2;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 1.5em;
+            flex: 1; /* Take up space to push other items to center */
+            font-family: Arial, sans-serif; /* Ensure font is consistent */
+        }
+        .navbar .center {
+            display: flex;
+            justify-content: center;
+            flex: 2; /* Take up remaining space */
+        }
+        .navbar .center a {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-family: Arial, sans-serif; /* Ensure font is consistent */
+        }
+        .navbar .center a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .navbar .right {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
+        }
+        .navbar .right input[type="text"] {
+            padding: 8px;
+            margin-right: 5px;
+        }
+        .navbar .right button {
+            padding: 8px 12px;
+            margin-left: 5px;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .navbar .right button:hover {
+            background-color: #777;
+        }
+        .home {
+            text-align: center;
+            padding: 50px;
+            box-sizing: border-box;
+            padding-top: 70px; /* Ensure content is not hidden behind the fixed navbar */
+            color: white;
+        }
+        .home h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .home p {
+            font-size: 1.5em;
+            max-width: 600px; /* Limit width to control line length */
+            margin: 0 auto; /* Center align the text */
+            line-height: 1.5em; /* Increase line height for better readability */
+        }
+        .social-icons {
+            position: absolute;
+            left: 20px;
+            top: 60%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .social-icons img {
+            width: 40px;
+            height: auto;
+            margin: 10px 0;
+        }
+        #recommendations {
+            position: absolute;
+            right: 20px;
+            top: 100px; /* Position it below the navbar */
+            width: 350px; /* Increased width for better visibility */
+            max-height: calc(100vh - 120px); /* Prevent it from covering the search buttons */
+            overflow-y: auto; /* Enable vertical scroll */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for better visibility */
+        }
+        #recommendations section {
+            margin-bottom: 20px;
+        }
+        #recommendations img {
+            width: 100%; /* Responsive image width */
+            max-width: 300px; /* Increased maximum width for better visibility */
+            height: auto;
+            display: block;
+            margin-bottom: 10px; /* Space between image and text */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="travel_recommendation.html" class="logo">TravelBloom</a>
+        <div class="center">
+            <a href="travel_recommendation.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="right">
+            <input type="text" id="search" placeholder="Search...">
+            <button type="button" id="search-button">Search</button>
+            <button type="button" id="reset-button">Reset</button>
+        </div>
+    </div>
+    <div class="home">
+        <h1>Welcome to TravelBloom</h1>
+        <p>Your ultimate guide to exceptional travel experiences. Explore top destinations, personalized recommendations, and insider tips to make your adventures unforgettable. Let us help you discover the best of the world.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com"><img src="images/facebook-icon.jpg" alt="Facebook"></a>
+            <a href="https://twitter.com"><img src="images/twitter-icon.jpg" alt="Twitter"></a>
+            <a href="https://instagram.com"><img src="images/instagram-icon.jpg" alt="Instagram"></a>
+        </div>
+    </div>
+
+    <!-- Recommendations section overlaying the background -->
+    <div id="recommendations">
+        <!-- Content will be dynamically added here by JavaScript -->
+    </div>
+
+    <script src="travel_recommendation.js" defer></script> <!-- Ensure path is correct -->
+    <script>
+        // JavaScript to handle search and reset functionality
+        document.getElementById('search-button').addEventListener('click', function() {
+            var searchQuery = document.getElementById('search').value.toLowerCase();
+            var items = document.querySelectorAll('#recommendations .recommendation-item');
+            items.forEach(function(item) {
+                var title = item.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(searchQuery)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('reset-button').addEventListener('click', function() {
+            document.getElementById('search').value = '';
+            var items = document.querySelectorAll('#recommendations .recommendation-item');
+            items.forEach(function(item) {
+                item.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
