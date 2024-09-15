@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us - TravelBloom</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; /* Ensure font is consistent */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            padding: 0 20px; /* Add padding for spacing */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure it's above other content */
+        }
+        .navbar .logo {
+            color: #f2f2f2;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 1.5em;
+            flex: 1; /* Take up space to push other items to center */
+            font-family: Arial, sans-serif; /* Ensure font is consistent */
+        }
+        .navbar .center {
+            display: flex;
+            justify-content: center;
+            flex: 2; /* Take up remaining space */
+        }
+        .navbar .center a {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-family: Arial, sans-serif; /* Ensure font is consistent */
+        }
+        .navbar .center a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .navbar .right {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
+        }
+        .home {
+            background-image: url('images/new-background-image.jpg'); /* Ensure this path is correct */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            padding: 50px;
+            box-sizing: border-box;
+            padding-top: 70px; /* Ensure content is not hidden behind the fixed navbar */
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2); /* Lighter faded background for better visibility */
+            margin: 20px auto;
+            max-width: 900px;
+            border-radius: 8px;
+            color: white;
+        }
+        .about-us {
+            font-size: 2.5em; /* Increased size for About Us */
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .our-team {
+            font-size: 2.5em; /* Increased size for Our Team */
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .team {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px; /* Space between team members */
+        }
+        .team-member {
+            background-color: rgba(0, 0, 0, 0.1); /* Lighter faded background for team members */
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            flex: 1 1 auto; /* Allow flexibility in sizing */
+            max-width: 200px; /* Control width */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="travel_recommendation.html" class="logo">TravelBloom</a>
+        <div class="center">
+            <a href="travel_recommendation.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="right">
+            <!-- Add search and buttons if needed -->
+        </div>
+    </div>
+    <div class="home">
+        <div class="content">
+            <h1 class="about-us">About Us</h1>
+            <p>Welcome to TravelBloom, where we help you discover the best travel destinations and recommendations. Our mission is to provide you with the most accurate and up-to-date information to make your travel planning seamless and enjoyable.</p>
+            <h2 class="our-team">Our Team</h2>
+            <div class="team">
+                <div class="team-member">
+                    <h3>John Doe</h3>
+                    <p>CEO</p>
+                </div>
+                <div class="team-member">
+                    <h3>Jane Smith</h3>
+                    <p>CTO</p>
+                </div>
+                <div class="team-member">
+                    <h3>Emily Johnson</h3>
+                    <p>Marketing Manager</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
