@@ -37,9 +37,48 @@ document.addEventListener('DOMContentLoaded', () => {
                     const description = document.createElement('p');
                     description.textContent = item.description;
 
+                    // Create an element for the local time
+                    const timeElement = document.createElement('p');
+                    timeElement.classList.add('local-time');
+
+                    // Set timezone based on city
+                    let timeZone;
+                    switch (item.name) {
+                        case "Sydney, Australia":
+                            timeZone = "Australia/Sydney";
+                            break;
+                        case "Melbourne, Australia":
+                            timeZone = "Australia/Melbourne";
+                            break;
+                        case "Tokyo, Japan":
+                            timeZone = "Asia/Tokyo";
+                            break;
+                        case "Kyoto, Japan":
+                            timeZone = "Asia/Tokyo";
+                            break;
+                        case "Rio de Janeiro, Brazil":
+                            timeZone = "America/Sao_Paulo";
+                            break;
+                        case "São Paulo, Brazil":
+                            timeZone = "America/Sao_Paulo";
+                            break;
+                        default:
+                            timeZone = "UTC"; // Fallback
+                    }
+
+                    // Display the current time for the recommended destination
+                    const displayLocalTime = () => {
+                        const options = { timeZone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+                        const now = new Date();
+                        const timeString = now.toLocaleTimeString('en-US', options);
+                        timeElement.textContent = `Current local time: ${timeString}`;
+                    };
+                    displayLocalTime();
+
                     itemDiv.appendChild(img);
                     itemDiv.appendChild(name);
                     itemDiv.appendChild(description);
+                    itemDiv.appendChild(timeElement); // Append the time element
 
                     section.appendChild(itemDiv);
                 });
